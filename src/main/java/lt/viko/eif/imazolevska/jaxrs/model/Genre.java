@@ -52,6 +52,13 @@ public enum Genre {
     private final int tmdbId;
     private final char code;
 
+    /**
+     * Creates a genre constant.
+     *
+     * @param tmdbId genre identifier in TMDB
+     * @param code   one-letter genre code
+     */
+
     Genre(int tmdbId, char code) {
         this.tmdbId = tmdbId;
         this.code = code;

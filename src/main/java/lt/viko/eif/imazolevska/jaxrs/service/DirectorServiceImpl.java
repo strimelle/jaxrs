@@ -32,18 +32,21 @@ public class DirectorServiceImpl implements DirectorService {
         this.directorRepository = directorRepository;
     }
 
+    /** {@inheritDoc} */
     @Override
     @Transactional(readOnly = true)
     public List<Director> findAll() {
         return directorRepository.findAll(Sort.by("id"));
     }
 
+    /** {@inheritDoc} */
     @Override
     @Transactional(readOnly = true)
     public Optional<Director> findById(int id) {
         return directorRepository.findById(id);
     }
 
+    /** {@inheritDoc} */
     @Override
     @Transactional(readOnly = true)
     public List<Director> findByGenre(String genre) {
@@ -56,6 +59,7 @@ public class DirectorServiceImpl implements DirectorService {
         return directorRepository.findByMainGenre(normalizeGenre(genre.charAt(0)));
     }
 
+    /** {@inheritDoc} */
     @Override
     public Director create(Director director) {
         validate(director);
@@ -67,6 +71,7 @@ public class DirectorServiceImpl implements DirectorService {
         return directorRepository.save(director);
     }
 
+    /** {@inheritDoc} */
     @Override
     public Optional<Director> update(int id, Director changes) {
         validate(changes);
@@ -82,6 +87,7 @@ public class DirectorServiceImpl implements DirectorService {
         });
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean delete(int id) {
         if (!directorRepository.existsById(id)) {
@@ -91,6 +97,7 @@ public class DirectorServiceImpl implements DirectorService {
         return true;
     }
 
+    /** {@inheritDoc} */
     @Override
     @Transactional(readOnly = true)
     public Optional<List<Movie>> findMovies(int id) {
@@ -134,6 +141,12 @@ public class DirectorServiceImpl implements DirectorService {
                 .orElseThrow(() -> new IllegalArgumentException("Unknown genre code: " + code));
     }
 
+    /**
+     * Checks whether a text is missing or contains only spaces.
+     *
+     * @param value text to check
+     * @return {@code true} if the text is {@code null} or blank
+     */
     private static boolean isBlank(String value) {
         return value == null || value.isBlank();
     }

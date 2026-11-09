@@ -134,6 +134,11 @@ public class DirectorResource {
                 .orElseGet(DirectorResource::notFound);
     }
 
+    /**
+     * Creates an empty 404 Not Found response.
+     *
+     * @return response with status 404
+     */
     private static Response notFound() {
         return Response.status(Response.Status.NOT_FOUND).build();
     }

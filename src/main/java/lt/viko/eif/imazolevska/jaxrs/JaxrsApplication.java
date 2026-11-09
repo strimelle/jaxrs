@@ -4,8 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Entry point of the application. Starts Spring Boot, which runs the XSL
- * transformations and publishes the SOAP web service.
+ * Entry point of the application.
+ *
+ * <p>Starts Spring Boot, which creates the H2 database with Liquibase and
+ * publishes the JAX-RS (Jersey) web service at {@code http://localhost:8082/api}.</p>
  */
 
 @SpringBootApplication

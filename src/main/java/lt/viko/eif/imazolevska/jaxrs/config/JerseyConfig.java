@@ -18,6 +18,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class JerseyConfig extends ResourceConfig {
+
+    /**
+     * Registers the resources and the exception mapper.
+     */
     public JerseyConfig(){
         register(DirectorResource.class);
         register(IllegalArgumentExceptionMapper.class);

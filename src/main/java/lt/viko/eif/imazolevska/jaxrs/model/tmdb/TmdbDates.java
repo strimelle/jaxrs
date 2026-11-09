@@ -7,6 +7,10 @@ final class TmdbDates {
 
     private static final int YEAR_LENGTH = 4;
 
+    /**
+     * Prevents creating instances, because the class has only static methods.
+     */
+
     private TmdbDates() {
     }
 

@@ -173,6 +173,12 @@ public class Movie {
         this.posterPath = posterPath;
     }
 
+    /**
+     * Returns a short description of the movie for logs and debugging.
+     *
+     * @return identifier, title, year of release and rating
+     */
+
     @Override
     public String toString() {
         return "Movie{id=" + id + ", title='" + title + "', releaseYear=" + releaseYear

@@ -279,6 +279,12 @@ public class Director {
         recalculateAverageRating();
     }
 
+    /**
+     * Returns a short description of the director for logs and debugging.
+     *
+     * @return identifier, full name and number of movies
+     */
+
     @Override
     public String toString() {
         return "Director{id=" + id + ", name='" + firstName + " " + lastName
