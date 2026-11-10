@@ -115,14 +115,15 @@ the current window with `$env:TMDB_API_TOKEN="<your token>"` before the command.
 
 ## Testing tools
 
-The `docs` folder contains the results of testing the service with external tools:
+The results of testing the service with external tools are stored in the `docs` and
+`postman` folders:
 
 | File | Tool | How it was made / how to use it |
 | --- | --- | --- |
-| `application.wadl` | SoapUI | WADL description saved from `http://localhost:8082/api/application.wadl` |
-| `soapui-project.xml` | SoapUI | REST project created by importing the WADL; open it with **File → Import Project** |
-| `openapi.json` | APIMATIC, Swagger Editor | OpenAPI 3.0 description converted from the WADL with the APIMATIC CLI (`apimatic api transform --format=oas3 --file=./docs/application.wadl`); open it in [Swagger Editor](https://editor.swagger.io) with **File → Import file** |
-| `postman-collection` | Postman | collection generated from `openapi.json`, with filled-in requests; import the folder in Postman with **Import** |
+| `docs/application.wadl` | SoapUI | WADL description saved from `http://localhost:8082/api/application.wadl` |
+| `docs/soapui-project.xml` | SoapUI | REST project created by importing the WADL; open it with **File → Import Project** |
+| `docs/openapi.json` | APIMATIC, Swagger Editor | OpenAPI 3.0 description converted from the WADL with the APIMATIC CLI (`apimatic api transform --format=oas3 --file=./docs/application.wadl`); open it in [Swagger Editor](https://editor.swagger.io) with **File → Import file** |
+| `postman/collections/JAX-RS Directors` | Postman | collection generated from `openapi.json`, with filled-in requests; Postman stores it in the `postman` folder of the project, open it in Postman with **Import** and select the folder |
 
 Browser tools such as Swagger Editor run on another address than the service, so the
 service sends CORS headers (`CorsFilter`) that allow these requests.
@@ -158,7 +159,8 @@ src/main/java/lt/viko/eif/imazolevska/jaxrs
 src/main/resources
 ├── application.properties
 └── db/changelog Liquibase changelogs
-docs             WADL, OpenAPI, SoapUI project and Postman collection
+docs             WADL, OpenAPI description and SoapUI project
+postman          Postman collection
 ```
 
 ## TMDB attribution
