@@ -3,6 +3,7 @@ package lt.viko.eif.imazolevska.jaxrs.config;
 
 import lt.viko.eif.imazolevska.jaxrs.resource.DirectorResource;
 import lt.viko.eif.imazolevska.jaxrs.resource.IllegalArgumentExceptionMapper;
+import lt.viko.eif.imazolevska.jaxrs.resource.TmdbImportResource;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
@@ -25,6 +26,7 @@ public class JerseyConfig extends ResourceConfig {
     public JerseyConfig(){
         register(DirectorResource.class);
         register(IllegalArgumentExceptionMapper.class);
+        register(TmdbImportResource.class);
     }
 
 
