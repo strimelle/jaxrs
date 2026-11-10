@@ -5,7 +5,6 @@ import lt.viko.eif.imazolevska.jaxrs.resource.DirectorResource;
 import lt.viko.eif.imazolevska.jaxrs.resource.IllegalArgumentExceptionMapper;
 import lt.viko.eif.imazolevska.jaxrs.resource.TmdbImportResource;
 import org.glassfish.jersey.server.ResourceConfig;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 
@@ -23,16 +22,11 @@ public class JerseyConfig extends ResourceConfig {
     /**
      * Registers the resources and the exception mapper.
      */
-    public JerseyConfig(){
+    public JerseyConfig() {
         register(DirectorResource.class);
         register(IllegalArgumentExceptionMapper.class);
         register(TmdbImportResource.class);
     }
-
-
-
-
-
 
 
 }

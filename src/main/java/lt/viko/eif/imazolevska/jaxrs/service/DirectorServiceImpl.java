@@ -32,21 +32,27 @@ public class DirectorServiceImpl implements DirectorService {
         this.directorRepository = directorRepository;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional(readOnly = true)
     public List<Director> findAll() {
         return directorRepository.findAll(Sort.by("id"));
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional(readOnly = true)
     public Optional<Director> findById(int id) {
         return directorRepository.findById(id);
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional(readOnly = true)
     public List<Director> findByGenre(String genre) {
@@ -59,7 +65,9 @@ public class DirectorServiceImpl implements DirectorService {
         return directorRepository.findByMainGenre(normalizeGenre(genre.charAt(0)));
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Director create(Director director) {
         validate(director);
@@ -71,7 +79,9 @@ public class DirectorServiceImpl implements DirectorService {
         return directorRepository.save(director);
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<Director> update(int id, Director changes) {
         validate(changes);
@@ -87,7 +97,9 @@ public class DirectorServiceImpl implements DirectorService {
         });
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean delete(int id) {
         if (!directorRepository.existsById(id)) {
@@ -97,7 +109,9 @@ public class DirectorServiceImpl implements DirectorService {
         return true;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional(readOnly = true)
     public Optional<List<Movie>> findMovies(int id) {

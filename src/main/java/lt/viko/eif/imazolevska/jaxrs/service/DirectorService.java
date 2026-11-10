@@ -72,7 +72,7 @@ public interface DirectorService {
      *
      * @param id director identifier
      * @return movies of the director (possibly an empty list),
-     *         or an empty value if the director does not exist
+     * or an empty value if the director does not exist
      */
     Optional<List<Movie>> findMovies(int id);
 }

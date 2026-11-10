@@ -10,43 +10,81 @@ import java.util.Optional;
  */
 public enum Genre {
 
-    /** Action movies. */
+    /**
+     * Action movies.
+     */
     ACTION(28, 'A'),
-    /** Adventure movies. */
+    /**
+     * Adventure movies.
+     */
     ADVENTURE(12, 'V'),
-    /** Animated movies. */
+    /**
+     * Animated movies.
+     */
     ANIMATION(16, 'N'),
-    /** Comedies. */
+    /**
+     * Comedies.
+     */
     COMEDY(35, 'C'),
-    /** Crime movies. */
+    /**
+     * Crime movies.
+     */
     CRIME(80, 'R'),
-    /** Documentaries. */
+    /**
+     * Documentaries.
+     */
     DOCUMENTARY(99, 'U'),
-    /** Dramas. */
+    /**
+     * Dramas.
+     */
     DRAMA(18, 'D'),
-    /** Family movies. */
+    /**
+     * Family movies.
+     */
     FAMILY(10751, 'F'),
-    /** Fantasy movies. */
+    /**
+     * Fantasy movies.
+     */
     FANTASY(14, 'Y'),
-    /** Historical movies. */
+    /**
+     * Historical movies.
+     */
     HISTORY(36, 'I'),
-    /** Horror movies. */
+    /**
+     * Horror movies.
+     */
     HORROR(27, 'H'),
-    /** Music movies. */
+    /**
+     * Music movies.
+     */
     MUSIC(10402, 'M'),
-    /** Mystery movies. */
+    /**
+     * Mystery movies.
+     */
     MYSTERY(9648, 'E'),
-    /** Romance movies. */
+    /**
+     * Romance movies.
+     */
     ROMANCE(10749, 'O'),
-    /** Science fiction movies. */
+    /**
+     * Science fiction movies.
+     */
     SCIENCE_FICTION(878, 'S'),
-    /** Movies made for television. */
+    /**
+     * Movies made for television.
+     */
     TV_MOVIE(10770, 'T'),
-    /** Thrillers. */
+    /**
+     * Thrillers.
+     */
     THRILLER(53, 'L'),
-    /** War movies. */
+    /**
+     * War movies.
+     */
     WAR(10752, 'W'),
-    /** Westerns. */
+    /**
+     * Westerns.
+     */
     WESTERN(37, 'X');
 
     private final int tmdbId;

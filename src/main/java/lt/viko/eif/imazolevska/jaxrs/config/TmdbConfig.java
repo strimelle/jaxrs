@@ -9,13 +9,22 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.client.RestClient;
 
-
+/**
+ * Configuration of the TMDB API connection.
+ */
 @Configuration
 @EnableConfigurationProperties(TmdbProperties.class)
 public class TmdbConfig {
 
+    /**
+     * Creates the HTTP client for the TMDB API. Every request is sent with the
+     * token in the {@code Authorization} header.
+     *
+     * @param properties TMDB settings
+     * @return configured HTTP client
+     */
     @Bean
-    public RestClient tmdbRestClient(TmdbProperties properties){
+    public RestClient tmdbRestClient(TmdbProperties properties) {
         return RestClient.builder()
                 .baseUrl(properties.baseUrl())
                 .defaultHeader(HttpHeaders.AUTHORIZATION, "Bearer " +

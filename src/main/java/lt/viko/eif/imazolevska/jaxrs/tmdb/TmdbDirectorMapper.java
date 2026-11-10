@@ -12,8 +12,22 @@ import java.time.Year;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Converts the data received from TMDB to the {@link Director} and {@link Movie} entities.
+ *
+ * <p>Only released movies with a rating are kept, so that announced movies
+ * do not lower the average rating of the director.</p>
+ */
 @Component
 public class TmdbDirectorMapper {
+
+    /**
+     * Creates a director with movies from a TMDB person and the person's movie credits.
+     *
+     * @param person  person data from TMDB
+     * @param credits movie credits of the person from TMDB
+     * @return a new, not yet saved director with movies
+     */
     public Director toDirector(TmdbPerson person, TmdbMovieCredits credits) {
         List<TmdbCrewCredit> releasedMovies = releasedDirectedMovies(credits);
         Director director = new Director(person.id(),
@@ -26,6 +40,7 @@ public class TmdbDirectorMapper {
         return director;
 
     }
+
 
     private static String firstName(String fullName) {
         String name = fullName == null ? "" : fullName.trim();

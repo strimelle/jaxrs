@@ -1,19 +1,7 @@
 package lt.viko.eif.imazolevska.jaxrs.resource;
 
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.DELETE;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.PUT;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.QueryParam;
-import jakarta.ws.rs.core.Context;
-import jakarta.ws.rs.core.GenericEntity;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
-import jakarta.ws.rs.core.UriInfo;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.*;
 import lt.viko.eif.imazolevska.jaxrs.model.Director;
 import lt.viko.eif.imazolevska.jaxrs.model.Movie;
 import lt.viko.eif.imazolevska.jaxrs.service.DirectorService;
@@ -130,7 +118,8 @@ public class DirectorResource {
     @Path("/{id}/movies")
     public Response getMovies(@PathParam("id") int id) {
         return directorService.findMovies(id)
-                .map(movies -> Response.ok(new GenericEntity<List<Movie>>(movies) { }).build())
+                .map(movies -> Response.ok(new GenericEntity<List<Movie>>(movies) {
+                }).build())
                 .orElseGet(DirectorResource::notFound);
     }
 

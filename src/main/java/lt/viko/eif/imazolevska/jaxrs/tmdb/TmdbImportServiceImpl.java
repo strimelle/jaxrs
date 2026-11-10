@@ -9,23 +9,27 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+/**
+ * {@link TmdbImportService} implementation that reads data with {@link TmdbClient},
+ * converts it with {@link TmdbDirectorMapper} and saves it with {@link DirectorRepository}.
+ */
 @Service
 @Transactional
-public class TmdbImportServiceImpl implements TmdbImportService{
+public class TmdbImportServiceImpl implements TmdbImportService {
     private final TmdbClient tmdbClient;
     private final TmdbDirectorMapper mapper;
     private final DirectorRepository directorRepository;
 
     public TmdbImportServiceImpl(TmdbClient tmdbClient, TmdbDirectorMapper mapper, DirectorRepository directorRepository) {
-        this.tmdbClient =tmdbClient;
-        this.mapper =mapper;
+        this.tmdbClient = tmdbClient;
+        this.mapper = mapper;
         this.directorRepository = directorRepository;
     }
 
     @Override
-    public Optional<Director> importDirector(int tmdbId){
+    public Optional<Director> importDirector(int tmdbId) {
         Optional<TmdbPerson> person = tmdbClient.findPerson(tmdbId);
-        if (person.isEmpty()){
+        if (person.isEmpty()) {
             return Optional.empty();
         }
         Director imported = mapper.toDirector(person.get(), tmdbClient.getMovieCredits(tmdbId));
