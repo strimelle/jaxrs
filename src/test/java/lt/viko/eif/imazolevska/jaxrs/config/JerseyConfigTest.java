@@ -1,5 +1,6 @@
 package lt.viko.eif.imazolevska.jaxrs.config;
 
+import lt.viko.eif.imazolevska.jaxrs.resource.CorsFilter;
 import lt.viko.eif.imazolevska.jaxrs.resource.DirectorResource;
 import lt.viko.eif.imazolevska.jaxrs.resource.IllegalArgumentExceptionMapper;
 import lt.viko.eif.imazolevska.jaxrs.resource.TmdbImportResource;
@@ -19,5 +20,6 @@ class JerseyConfigTest {
         assertTrue(config.getClasses().contains(DirectorResource.class));
         assertTrue(config.getClasses().contains(TmdbImportResource.class));
         assertTrue(config.getClasses().contains(IllegalArgumentExceptionMapper.class));
+        assertTrue(config.getClasses().contains(CorsFilter.class));
     }
 }

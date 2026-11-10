@@ -1,0 +1,46 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/directors/:id"
+method: PUT
+headers:
+  Content-Type: application/json
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "7"
+    description: ""
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "required": [
+          "value"
+        ]
+      }
+body:
+  type: json
+  content: "   {\r
+
+    \     \"firstName\": \"Greta\",\r
+
+    \     \"lastName\": \"Gerwig\",\r
+
+    \     \"birthYear\": 1984,\r
+
+    \     \"active\": false,\r
+
+    \     \"mainGenre\": \"D\"\r
+
+    \   }"
+  $type: |-
+    {
+      "type": "string"
+    }
+settings: {}
+examples: ./.resources/updateDirector.resources/examples
+order: 3000

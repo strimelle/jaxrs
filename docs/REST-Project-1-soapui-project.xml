@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="794c2b11-74f7-445d-a9b9-5204e310a212" activeEnvironment="Default" name="REST Project 1" resourceRoot="" soapui-version="5.10.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:RestService" id="314181f7-251b-4267-9d5c-c118436041bc" wadlVersion="http://wadl.dev.java.net/2009/02" name="REST Project 1" type="rest" basePath="/api" definitionUrl="http://localhost:8082/api/application.wadl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8082/api/application.wadl"><con:part><con:url>http://localhost:8082/api/application.wadl</con:url><con:content><![CDATA[<application xmlns="http://wadl.dev.java.net/2009/02">
+  <doc jersey:generatedBy="Jersey: 4.0.3 2026-10-01 08:25:38" xmlns:jersey="http://jersey.java.net/"/>
+  <doc jersey:hint="This is simplified WADL with user and core resources only. To get full WADL with extended resources use the query parameter detail. Link: http://localhost:8082/api/application.wadl?detail=true" xmlns:jersey="http://jersey.java.net/"/>
+  <grammars>
+    <include href="application.wadl/xsd0.xsd">
+      <doc title="Generated" xml:lang="en"/>
+    </include>
+  </grammars>
+  <resources base="http://localhost:8082/api/">
+    <resource path="/directors">
+      <method id="getDirectors" name="GET">
+        <request>
+          <param name="genre" style="query" type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response>
+          <ns2:representation element="director" mediaType="application/json" xmlns:ns2="http://wadl.dev.java.net/2009/02" xmlns="" xmlns:ns="http://wadl.dev.java.net/2009/02"/>
+          <ns2:representation element="director" mediaType="application/xml" xmlns:ns2="http://wadl.dev.java.net/2009/02" xmlns="" xmlns:ns="http://wadl.dev.java.net/2009/02"/>
+        </response>
+      </method>
+      <method id="createDirector" name="POST">
+        <request>
+          <ns2:representation element="director" mediaType="application/json" xmlns:ns2="http://wadl.dev.java.net/2009/02" xmlns="" xmlns:ns="http://wadl.dev.java.net/2009/02"/>
+          <ns2:representation element="director" mediaType="application/xml" xmlns:ns2="http://wadl.dev.java.net/2009/02" xmlns="" xmlns:ns="http://wadl.dev.java.net/2009/02"/>
+        </request>
+        <response>
+          <representation mediaType="application/json"/>
+          <representation mediaType="application/xml"/>
+        </response>
+      </method>
+      <resource path="/{id}/movies">
+        <param name="id" style="template" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="getMovies" name="GET">
+          <response>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/{id}">
+        <param name="id" style="template" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="deleteDirector" name="DELETE">
+          <response>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+          </response>
+        </method>
+        <method id="updateDirector" name="PUT">
+          <request>
+            <ns2:representation element="director" mediaType="application/json" xmlns:ns2="http://wadl.dev.java.net/2009/02" xmlns="" xmlns:ns="http://wadl.dev.java.net/2009/02"/>
+            <ns2:representation element="director" mediaType="application/xml" xmlns:ns2="http://wadl.dev.java.net/2009/02" xmlns="" xmlns:ns="http://wadl.dev.java.net/2009/02"/>
+          </request>
+          <response>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+          </response>
+        </method>
+        <method id="getDirector" name="GET">
+          <response>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+          </response>
+        </method>
+      </resource>
+    </resource>
+    <resource path="/directors/import">
+      <resource path="/{tmdbId}">
+        <param name="tmdbId" style="template" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="importDirector" name="POST">
+          <response>
+            <representation mediaType="application/json"/>
+            <representation mediaType="application/xml"/>
+          </response>
+        </method>
+      </resource>
+    </resource>
+  </resources>
+</application>]]></con:content><con:type>http://wadl.dev.java.net/2009/02</con:type></con:part><con:part><con:url>http://localhost:8082/api/application.wadl/xsd0.xsd</con:url><con:content><![CDATA[<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="director" type="director"/>
+  <xs:element name="movie" type="movie"/>
+  <xs:complexType name="director">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int" minOccurs="0"/>
+      <xs:element name="tmdbId" type="xs:int" minOccurs="0"/>
+      <xs:element name="firstName" type="xs:string" minOccurs="0"/>
+      <xs:element name="lastName" type="xs:string" minOccurs="0"/>
+      <xs:element name="birthYear" type="xs:int"/>
+      <xs:element name="averageRating" type="xs:float"/>
+      <xs:element name="active" type="xs:boolean"/>
+      <xs:element name="mainGenre" type="xs:string" minOccurs="0"/>
+      <xs:element name="movies" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="movie" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="movie">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int" minOccurs="0"/>
+      <xs:element name="tmdbId" type="xs:int" minOccurs="0"/>
+      <xs:element name="title" type="xs:string" minOccurs="0"/>
+      <xs:element name="releaseYear" type="xs:int"/>
+      <xs:element name="rating" type="xs:float"/>
+      <xs:element name="posterPath" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8082</con:endpoint></con:endpoints><con:resource name="/directors" path="directors" id="dbba69ba-b7f7-403d-91f6-3f2e39d13869"><con:settings/><con:parameters><con:parameter><con:name>id</con:name><con:value/><con:style>QUERY</con:style><con:default/><con:description xsi:nil="true"/></con:parameter></con:parameters><con:resource name="/{id}/movies" path="/{id}/movies" id="aa66d37d-f069-4357-89a8-e35ed04cc06f"><con:settings/><con:parameters><con:parameter><con:name>id</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - getMovies" id="d4c91e1b-2b44-4463-a7bc-2d078cb9b56f" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" id="21bd089c-d68b-4899-86bd-29364f19f141" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8082</con:endpoint><con:request/><con:originalUri>http://localhost/api/directors/1/movies</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="id" value="2" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry>id</con:entry></con:parameterOrder></con:request></con:method></con:resource><con:resource name="/{id}" path="/{id}" id="142f2732-8565-4f58-a2e9-e252322c32cb"><con:settings/><con:parameters><con:parameter><con:name>id</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="DELETE - deleteDirector" id="346cc58e-0593-4cd1-a9bc-0a46037e68c3" method="DELETE"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" id="eac67410-6302-42ce-bd52-4b0f5ccc753f" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8082</con:endpoint><con:request/><con:originalUri>http://localhost/api/directors/7</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="id" value="7" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry>id</con:entry></con:parameterOrder></con:request></con:method><con:method name="PUT - updateDirector" id="395da21e-9fc9-4c3d-95fd-0f45aa1704f0" method="PUT"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element>director</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="REQUEST" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element>director</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" id="4c83cc45-277c-46b1-81de-a7e232c032a3" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8082</con:endpoint><con:request>  {
+    "firstName": "Greta",
+    "lastName": "Gerwig",
+    "birthYear": 1984,
+    "active": false,
+    "mainGenre": "C"
+  }</con:request><con:originalUri>http://localhost/api/directors/23</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="id" value="7" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry>id</con:entry></con:parameterOrder></con:request></con:method><con:method name="GET - getDirector" id="c1636290-9f01-4071-a80d-8fee68fdc795" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" id="714045dc-82fb-4d94-8165-94f3b4940379" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/xml" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>http://localhost:8082</con:endpoint><con:request/><con:originalUri>http://localhost/api/directors/1</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="id" value="1" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry>id</con:entry></con:parameterOrder></con:request></con:method></con:resource><con:method name="GET - getDirectors" id="cca7a0eb-b0af-4786-813c-3b5d2821941a" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element>director</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element>director</con:element><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" id="27ccd93f-e160-4b21-a9ff-63486b9386e3" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8082</con:endpoint><con:request/><con:originalUri>http://localhost/api//directors</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="id" value="7" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry>id</con:entry></con:parameterOrder></con:request></con:method><con:method name="POST - createDirector" id="2cf20e9b-9da6-414e-9d69-fdd021ca12df" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element>director</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="REQUEST" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element>director</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" id="e1730669-0a66-4330-8dbe-b14ab132eb53" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8082</con:endpoint><con:request>  {
+    "firstName": "Greta",
+    "lastName": "Gerwig",
+    "birthYear": 1983,
+    "active": true,
+    "mainGenre": "C"
+  }</con:request><con:originalUri>http://localhost/api/directors</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="id" value="1" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry>id</con:entry></con:parameterOrder></con:request></con:method></con:resource><con:resource name="/directors/import" path="/directors/import" id="04bf6b75-9a17-4b3d-8844-1cbe2b522871"><con:settings/><con:parameters/><con:resource name="/{tmdbId}" path="/{tmdbId}" id="62495809-cf83-47e6-a9d4-1d1977c286ef"><con:settings/><con:parameters><con:parameter><con:name>tmdbId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="POST - importDirector" id="20724f2f-a93c-4633-ab7c-b4c64e17c37d" method="POST"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" id="0d6cdc19-8154-43bf-8152-162ea0dcfe29" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8082</con:endpoint><con:request/><con:originalUri>http://localhost/api/directors/import/1032</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="tmdbId" value="333" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:request></con:method></con:resource></con:resource></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

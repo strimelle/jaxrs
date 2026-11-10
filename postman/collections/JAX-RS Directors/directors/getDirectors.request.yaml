@@ -1,0 +1,18 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/directors"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: genre
+    value: string
+    disabled: true
+    description: ""
+    $type: string
+body:
+  type: text
+  content: ""
+settings: {}
+examples: ./.resources/getDirectors.resources/examples
+order: 1000

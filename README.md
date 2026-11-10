@@ -52,7 +52,8 @@ E mystery, O romance, S science fiction, T TV movie, L thriller, W war, X wester
 ## REST API
 
 Base address: `http://localhost:8082/api`. Responses are JSON by default, or XML with the
-header `Accept: application/xml`.
+header `Accept: application/xml`. Invalid data is answered with `400 Bad Request` and a
+plain text message, for example `Unknown genre code: Q`.
 
 | Method | Path | Description | Responses |
 | --- | --- | --- | --- |
@@ -116,11 +117,15 @@ the current window with `$env:TMDB_API_TOKEN="<your token>"` before the command.
 
 The `docs` folder contains the results of testing the service with external tools:
 
-- `application.wadl` – WADL description of the service;
-- `openapi.json` – OpenAPI description converted from the WADL with APIMATIC,
-  used in Swagger Editor;
-- SoapUI project and Postman collection with requests to the service;
-- `screenshots` – screenshots of the requests and responses.
+| File | Tool | How it was made / how to use it |
+| --- | --- | --- |
+| `application.wadl` | SoapUI | WADL description saved from `http://localhost:8082/api/application.wadl` |
+| `soapui-project.xml` | SoapUI | REST project created by importing the WADL; open it with **File → Import Project** |
+| `openapi.json` | APIMATIC, Swagger Editor | OpenAPI 3.0 description converted from the WADL with the APIMATIC CLI (`apimatic api transform --format=oas3 --file=./docs/application.wadl`); open it in [Swagger Editor](https://editor.swagger.io) with **File → Import file** |
+| `postman-collection` | Postman | collection generated from `openapi.json`, with filled-in requests; import the folder in Postman with **Import** |
+
+Browser tools such as Swagger Editor run on another address than the service, so the
+service sends CORS headers (`CorsFilter`) that allow these requests.
 
 ## Tests
 
@@ -147,12 +152,13 @@ src/main/java/lt/viko/eif/imazolevska/jaxrs
 ├── model        Director, Movie, Genre
 │   └── tmdb     classes for the TMDB JSON responses
 ├── repository   Spring Data JPA repositories
-├── resource     JAX-RS resources and exception mapper
+├── resource     JAX-RS resources, exception mapper and CORS filter
 ├── service      business logic for directors
 └── tmdb         TMDB client, mapper, import service and startup import
 src/main/resources
 ├── application.properties
 └── db/changelog Liquibase changelogs
+docs             WADL, OpenAPI, SoapUI project and Postman collection
 ```
 
 ## TMDB attribution

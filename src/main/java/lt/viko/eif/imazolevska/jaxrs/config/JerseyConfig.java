@@ -1,6 +1,7 @@
 package lt.viko.eif.imazolevska.jaxrs.config;
 
 
+import lt.viko.eif.imazolevska.jaxrs.resource.CorsFilter;
 import lt.viko.eif.imazolevska.jaxrs.resource.DirectorResource;
 import lt.viko.eif.imazolevska.jaxrs.resource.IllegalArgumentExceptionMapper;
 import lt.viko.eif.imazolevska.jaxrs.resource.TmdbImportResource;
@@ -26,6 +27,7 @@ public class JerseyConfig extends ResourceConfig {
         register(DirectorResource.class);
         register(IllegalArgumentExceptionMapper.class);
         register(TmdbImportResource.class);
+        register(CorsFilter.class);
     }
 
 
